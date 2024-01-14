@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserAuthService } from '../services/user-auth.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  constructor(private userSerivce:UserAuthService,private router:Router){
+  constructor(private userSerivce:UserAuthService,private router:Router,protected userauth:UserService){
 
   }
   public isloggedIn(){
