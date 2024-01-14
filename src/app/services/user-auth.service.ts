@@ -4,16 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserAuthService {
-  isLoggedin(): import('../_auth/auth.guard').AuthGuard {
-    throw new Error('Method not implemented.');
-  }
+
   constructor() {}
 
   public setRoles(roles: []) {
-    localStorage.setItem('roles', JSON.stringify(roles));
+    localStorage.setItem('role', JSON.stringify(roles));
   }
   public getRoles(): [] {
-    return JSON.parse(localStorage.getItem('roles') as string);
+    return JSON.parse(localStorage.getItem('role') as string);
   }
   public setToken(jwttoken: string) {
     localStorage.setItem('jwttoken', jwttoken);
