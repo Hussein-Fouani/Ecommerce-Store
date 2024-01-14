@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserAuthService {
-
   constructor() {}
 
   public setRoles(roles: []) {
@@ -25,4 +24,13 @@ export class UserAuthService {
   public isAuthenticated() {
     return this.getRoles() && this.getToken();
   }
+  public isAdmin() {
+    const rols: any[] = this.getRoles();
+    return rols[0].role === 'ADMIN';
+  }
+  public isUser() {
+    const rols: any[] = this.getRoles();
+    return rols[0].role === 'USER';
+  }
 }
+
