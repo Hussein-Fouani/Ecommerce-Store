@@ -6,7 +6,7 @@ import { UserAuthService } from './user-auth.service';
   providedIn: 'root',
 })
 export class UserService {
-  url_base: string = '/api/v1/auth';
+  url_base: string = 'http://localhost:9090/api/v1/auth';
   requestheader = new HttpHeaders({
     'No-Auth': 'True',
   });
