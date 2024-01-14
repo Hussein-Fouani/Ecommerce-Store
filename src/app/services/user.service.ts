@@ -20,6 +20,16 @@ export class UserService {
       headers: this.requestheader,
     });
   }
+  public forUser() {
+    return this.httpclient.get(this.url_base + '/api/v1/user', {
+      responseType: 'text',
+    });
+  }
+  public forAdmin() {
+    return this.httpclient.get(this.url_base + '/api/v1/admin', {
+      responseType: 'text',
+    });
+  }
   public roleMatch(allowedroles: any): boolean {
     let isMatched = false;
     const userRoles: any = this.userservice.getRoles();
@@ -33,6 +43,6 @@ export class UserService {
         }
       }
     }
-     return (isMatched = false);
+    return (isMatched = false);
   }
 }
