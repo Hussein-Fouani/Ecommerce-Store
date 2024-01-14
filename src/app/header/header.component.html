@@ -9,6 +9,12 @@
   </button>
 </mat-toolbar>
 
+<mat-toolbar color="dark" *ngIf="isloggedIn()">
+  <button mat-raised-button color="primary" routerLink="/home"  >Home </button>
+    <button *ngIf="isAdmin()" mat-raised-button color="warn" routerLink="/addnewproduct"  >Add Product </button>
+
+</mat-toolbar>
+
   <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
