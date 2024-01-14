@@ -16,7 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AuthGuard } from './auth.guard'
+import { AuthGuard } from './_auth/auth.guard'
 import { AuthInterceptor } from './_auth/auth.interceptor';
 
 @NgModule({
@@ -37,7 +37,7 @@ import { AuthInterceptor } from './_auth/auth.interceptor';
     HttpClientModule,
     RouterModule
   ],
-  providers: [provideClientHydration(),AuthGuard{
+  providers: [provideClientHydration(),AuthGuard,{
     provide:HTTP_INTERCEPTORS,
     useClass:AuthInterceptor,
     multi:true
