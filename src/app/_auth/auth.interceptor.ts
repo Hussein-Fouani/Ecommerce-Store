@@ -8,6 +8,11 @@ import {
 import { Observable, catchError, throwError } from 'rxjs';
 import { UserAuthService } from '../services/user-auth.service';
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+    providedIn:'root'
+})
 
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private userauth: UserAuthService, private router: Router) {}
