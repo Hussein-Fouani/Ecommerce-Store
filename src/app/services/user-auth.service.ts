@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserAuthService {
+  isLoggedin(): import('../_auth/auth.guard').AuthGuard {
+    throw new Error('Method not implemented.');
+  }
   constructor() {}
 
   public setRoles(roles: []) {
@@ -17,8 +20,8 @@ export class UserAuthService {
   }
   public getToken(): string {
     return localStorage.getItem('jwttoken') as string;
-  } 
-  public clear(){
+  }
+  public clear() {
     localStorage.clear();
   }
   public isAuthenticated() {
