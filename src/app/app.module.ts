@@ -18,6 +18,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_auth/auth.guard'
 import { AuthInterceptor } from './_auth/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AuthInterceptor } from './_auth/auth.interceptor';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule
   ],
   providers: [provideClientHydration(),AuthGuard,{
     provide:HTTP_INTERCEPTORS,
