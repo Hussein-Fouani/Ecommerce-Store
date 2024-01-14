@@ -22,7 +22,7 @@ export class LoginComponent {
       if (roles === 'ADMIN') {
         this.router.navigate(['/admin']);
       } else {
-        this.router.navigate(['/user  ']);
+        this.router.navigate(['/user']);
       }
     },(error)=>{
       console.log(error);
