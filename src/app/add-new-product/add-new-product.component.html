@@ -1,25 +1,63 @@
 <div class="container mt-5">
   <div class="card p-2">
     <div class="row">
-        <div class="col-6">
-
-        </div>
-        <div class="col-6">
-            Image Area
-        </div>
+      <div class="col-6">
+        <form>
+          <p>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Product Name</mat-label>
+              <input
+                matInput
+                placeholder="Product Name"
+                ngModel
+                id="product"
+                name="product"
+              />
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Product Description</mat-label>
+              <input
+                matInput
+                placeholder="Product Description"
+                ngModel
+                id="product"
+                name="product"
+              />
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Product Actual Price</mat-label>
+              <input
+                matInput
+                placeholder="Product Actual Price"
+                ngModel
+                id="product"
+                name="product"
+              />
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Product Discounted Price</mat-label>
+              <input
+                matInput
+                placeholder="Product Discounted Price"
+                ngModel
+                id="product"
+                name="product"
+              />
+            </mat-form-field>
+          </p>
+          <div>
+            <button mat-stroked-button color="primary">Add Product</button>
+            <button mat-stroked-button color="accent">Accent</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-6">Image Area</div>
     </div>
-
-    <p>
-      <mat-form-field appearance="fill" class="w-75">
-        <mat-label>Enter your Username</mat-label>
-        <input
-          matInput
-          placeholder="Placeholder"
-          ngModel
-          id="product"
-          name="product"
-        />
-      </mat-form-field>
-    </p>
   </div>
 </div>
