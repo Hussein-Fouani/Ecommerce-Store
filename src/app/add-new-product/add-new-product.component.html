@@ -2,16 +2,15 @@
   <div class="card p-2">
     <div class="row">
       <div class="col-6">
-        <form>
+        <form #productform="ngForm" (ngSubmit)="addProduct(productform)">
           <p>
             <mat-form-field appearance="fill" class="w-100">
               <mat-label>Product Name</mat-label>
               <input
                 matInput
                 placeholder="Product Name"
-                ngModel
-                id="product"
-                name="product"
+                [(ngModel)]="product.productname"
+                name="productname"
               />
             </mat-form-field>
           </p>
@@ -21,9 +20,8 @@
               <input
                 matInput
                 placeholder="Product Description"
-                ngModel
-                id="product"
-                name="product"
+                [(ngModel)]="product.productdescription"
+                name="productdescription"
               />
             </mat-form-field>
           </p>
@@ -33,9 +31,8 @@
               <input
                 matInput
                 placeholder="Product Actual Price"
-                ngModel
-                id="product"
-                name="product"
+                [(ngModel)]="product.productprice"
+                name="productprice"
               />
             </mat-form-field>
           </p>
@@ -45,15 +42,14 @@
               <input
                 matInput
                 placeholder="Product Discounted Price"
-                ngModel
-                id="product"
-                name="product"
+                [(ngModel)]="product.discountprice"
+                name="discountprice"
               />
             </mat-form-field>
           </p>
           <div>
             <button mat-stroked-button color="primary">Add Product</button>
-            <button mat-stroked-button color="accent">Accent</button>
+            <button type="submit" mat-stroked-button color="accent">Clear</button>
           </div>
         </form>
       </div>
