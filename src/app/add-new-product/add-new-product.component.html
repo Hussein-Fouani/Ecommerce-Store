@@ -53,7 +53,9 @@
           </div>
         </form>
       </div>
-      <div class="col-6">Image Area</div>
+      <div class="col-6">
+        <input type="file" multiple value="select" #selectFile {change}="onFileSelected($event)">upload image
+      </div>
     </div>
   </div>
 </div>
