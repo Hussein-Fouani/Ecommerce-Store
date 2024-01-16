@@ -3,8 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../services/_services/product.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { FileHandle } from '../model/file-handle.model';
+import e from 'express';
 
+interface FileHandle {
+  files: File;
+  url: SafeUrl;
+}
 
 @Component({
   selector: 'app-add-new-product',
@@ -49,8 +53,8 @@ export class AddNewProductComponent implements OnInit {
     for (let i = 0; i < product.productImages.length; i++) {
       formData.append(
         'imagefile',
-        product.productImages[i].file,
-        product.productImages[i].file.name
+        product.productImages[i].files,
+        product.productImages[i].files.name
       );
     }
 
@@ -60,13 +64,17 @@ export class AddNewProductComponent implements OnInit {
   onFileSelected(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
-      const filehandle: FileHandle = {
-        file: file,
+      const filehandle: import('fs/promises').FileHandle = {
+        files: file,
         url: this.dom.bypassSecurityTrustUrl(
           window.URL.createObjectURL(file)
         ) as SafeUrl,
-      };  
+      };
       this.product.productImages.push(filehandle);
     }
+  }
+  removeImages(event:number){
+    this.product.productImages.splice(event,1);
+
   }
 }
