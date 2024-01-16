@@ -1,27 +1,27 @@
 <table mat-table [dataSource]="productDetails" class="mat-elevation-z8">
-  <ng-container matColumnDef="position">
+  <ng-container matColumnDef="ProducId">
     <th mat-header-cell *matHeaderCellDef>ID.</th>
     <td mat-cell *matCellDef="let element">{{ element.producId }}</td>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="name">
+  <ng-container matColumnDef="Productname">
     <th mat-header-cell *matHeaderCellDef>Productname</th>
     <td mat-cell *matCellDef="let element">{{ element.productname }}</td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
+  <ng-container matColumnDef="ProductDescription">
     <th mat-header-cell *matHeaderCellDef>ProductDescription</th>
     <td mat-cell *matCellDef="let element">{{ element.productdescription }}</td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
+  <ng-container matColumnDef="ProductPrice">
     <th mat-header-cell *matHeaderCellDef>ProductPrice</th>
     <td mat-cell *matCellDef="let element">{{ element.productprice }}</td>
   </ng-container>
-  <ng-container matColumnDef="symbol">
+  <ng-container matColumnDef="DiscountPrice">
     <th mat-header-cell *matHeaderCellDef>DiscountPrice</th>
     <td mat-cell *matCellDef="let element">{{ element.discountprice }}</td>
   </ng-container>
