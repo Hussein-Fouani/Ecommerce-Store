@@ -25,4 +25,9 @@ export class ProductService {
   public addProduct(product: FormData) {
     return this.httpClient.post<Product>(this.baseurl, product);
   }
+  public getAllProducts(){
+    return this.httpClient.get<Product[]>(
+      this.baseurl + '/api/v1/products/getProducts'
+    );
+  }
 }
