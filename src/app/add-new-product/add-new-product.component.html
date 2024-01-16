@@ -49,12 +49,48 @@
           </p>
           <div>
             <button mat-stroked-button color="primary">Add Product</button>
-            <button type="submit" mat-stroked-button color="accent">Clear</button>
+            <button type="submit" mat-stroked-button color="accent">
+              Clear
+            </button>
           </div>
         </form>
       </div>
       <div class="col-6">
-        <input type="file" multiple value="select" #selectFile {change}="onFileSelected($event)">upload image
+        <div>
+          <div class="dropzone">
+            <div class="textwrapper">
+             <div class="centered">
+              Drag and Drop your file or browse it
+               <a (click)="selectFile.click()" class="browse-button">browse</a>
+             </div>
+            </div>
+          </div>
+          <input
+            type="file"
+            multiple
+            value="select"
+            style="display: none;"
+            #selectFile
+            {change}="onFileSelected($event)"
+          />upload image
+        </div>
+        <div class="mt-5">
+          <div class="row">
+            <mat-grid-list cols="4" rowHeight="1:1">
+              <mat-grid-tile *ngFor="let p of product.productImages;let i =index">
+                <div style="position: relative;">
+                  <span class="btn-remove-image" (click)="removeImages(i)">X</span>
+                  <img [src]="p.url" width="100px" height="100px" alt="">
+                  export interface FileHandle {
+                    file: File;
+                    url: string;
+                  }
+                </div>
+              </mat-grid-tile>
+              
+            </mat-grid-list>
+          </div>
+        </div>
       </div>
     </div>
   </div>
