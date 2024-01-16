@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 import { AuthGuard } from './_auth/auth.guard';
+import { ShowproductsDetailsComponent } from './showproducts-details/showproducts-details.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: ['ADMIN'] },
   },
+  { path: 'showproductdetails', component: ShowproductsDetailsComponent },
 ];
 
 @NgModule({
