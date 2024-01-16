@@ -1,12 +1,10 @@
-import { Product } from './../model/product.model';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../services/_services/product.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import e from 'express';
 
 interface FileHandle {
-  files: File;
+  file: File;
   url: SafeUrl;
 }
 
@@ -16,12 +14,12 @@ interface FileHandle {
   styleUrls: ['./add-new-product.component.css'],
 })
 export class AddNewProductComponent implements OnInit {
-  product: Product = {
+  product = {
     productname: '',
     productdescription: '',
     productprice: 0,
     discountprice: 0,
-    productImages: [],
+    productImages: [] as FileHandle[],
   };
 
   constructor(
@@ -30,51 +28,53 @@ export class AddNewProductComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loadProducts();
+  }
+
+  loadProducts() {
     this.productService.getProducts().subscribe((products) => {
       this.productService.setProducts(products);
     });
   }
 
-  addProduct(productform: NgForm) {
+  addProduct(productForm: NgForm) {
     const formData = this.prepareFormData(this.product);
 
-    this.productService.addProduct(formData).subscribe((sub: Product) => {
-      productform.reset();
+    this.productService.addProduct(formData).subscribe((newProduct) => {
+      productForm.reset();
+      this.loadProducts(); // Reload products after adding a new one
     });
   }
 
-  prepareFormData(product: Product): FormData {
+  prepareFormData(product: any): FormData {
     const formData = new FormData();
-    formData.append(
-      'product',
-      new Blob([JSON.stringify(product)], { type: 'application/json' })
-    );
+    formData.append('product', JSON.stringify(product));
 
-    for (let i = 0; i < product.productImages.length; i++) {
-      formData.append(
-        'imagefile',
-        product.productImages[i].files,
-        product.productImages[i].files.name
-      );
-    }
+    product.productImages.forEach((image: any, index: any) => {
+      formData.append(`imagefile${index}`, image.file, image.file.name);
+    });
 
     return formData;
   }
 
   onFileSelected(event: any) {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      const filehandle: import('fs/promises').FileHandle = {
-        files: file,
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      const fileHandle: FileHandle = {
+        file: file,
         url: this.dom.bypassSecurityTrustUrl(
           window.URL.createObjectURL(file)
         ) as SafeUrl,
       };
-      this.product.productImages.push(filehandle);
+      this.product.productImages.push(fileHandle);
     }
   }
-  removeImages(event:number){
-    this.product.productImages.splice(event,1);
 
+  removeImage(index: number) {
+    this.product.productImages.splice(index, 1);
+  }
+  fileDrop(filehandle: FileHandle) {
+    this.product.productImages.push(filehandle);
   }
 }
