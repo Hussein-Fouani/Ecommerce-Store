@@ -30,6 +30,7 @@ import { ShowproductsDetailsComponent } from './showproducts-details/showproduct
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ViewImagesDiaglogComponent } from './view-images-diaglog/view-images-diaglog.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AddNewProductComponent,
     DragDirective,
     ShowproductsDetailsComponent,
+    ViewImagesDiaglogComponent,
   ],
   imports: [
     BrowserModule,
