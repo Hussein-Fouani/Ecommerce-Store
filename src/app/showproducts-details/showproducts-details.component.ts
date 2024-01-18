@@ -1,14 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../services/_services/product.service';
+import { ViewImagesDiaglogComponent } from '../view-images-diaglog/view-images-diaglog.component';
+import { ImageProcessingService } from '../services/image-processing.service';
 import { Product } from '../model/product.model';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-showproducts-details',
   templateUrl: './showproducts-details.component.html',
-  styleUrl: './showproducts-details.component.css',
+  styleUrls: ['./showproducts-details.component.css'],
 })
 export class ShowproductsDetailsComponent implements OnInit {
-  constructor(private product: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    public dialog: MatDialog,
+    private imageProcessingService: ImageProcessingService
+  ) {}
+
   productDetails: Product[] = [];
   displayedColumns: string[] = [
     'productId',
@@ -20,17 +29,37 @@ export class ShowproductsDetailsComponent implements OnInit {
     'Edit',
     'Delete',
   ];
+
   ngOnInit(): void {
     this.getProducts();
   }
-  public getProducts() {
-    this.product.getAllProducts().subscribe((sub: Product[]) => {
-      this.productDetails = sub;
+
+  getProducts() {
+    this.productService
+      .getAllProducts()
+      .pipe(
+        tap((products: Product[]) => {
+          products.forEach((prod: Product) => {
+            this.imageProcessingService.createImages(prod);
+          });
+        })
+      )
+      .subscribe((sub: Product[]) => {
+        this.productDetails = sub;
+      });
+  }
+
+  deleteProduct(productId: number) {
+    this.productService.deleteProduct(productId).subscribe(() => {
+      this.getProducts();
     });
   }
-  deleteProduct(productId:number){
-    this.product.deleteProduct(productId).subscribe((sub)=>{
-      this.getProducts();
-    })
+
+  openDialog(productImages: Product) {
+    this.dialog.open(ViewImagesDiaglogComponent, {
+      height: '500px',
+      width: '500px',
+      data: { images: productImages.productImages }, 
+    });
   }
 }
