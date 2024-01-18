@@ -28,6 +28,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { DragDirective } from './drag.directive';
 import { ShowproductsDetailsComponent } from './showproducts-details/showproducts-details.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatGridListModule,
     MatTableModule,
+    MatIconModule,
   ],
   providers: [
     provideClientHydration(),
