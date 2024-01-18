@@ -16,6 +16,7 @@ export class ShowproductsDetailsComponent implements OnInit {
     'productdescription',
     'productprice',
     'discountprice',
+    'Images',
     'Edit',
     'Delete',
   ];
