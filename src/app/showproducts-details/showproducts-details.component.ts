@@ -16,6 +16,8 @@ export class ShowproductsDetailsComponent implements OnInit {
     'productdescription',
     'productprice',
     'discountprice',
+    'Edit',
+    'Delete',
   ];
   ngOnInit(): void {
     this.getProducts();
@@ -24,5 +26,10 @@ export class ShowproductsDetailsComponent implements OnInit {
     this.product.getAllProducts().subscribe((sub: Product[]) => {
       this.productDetails = sub;
     });
+  }
+  deleteProduct(productId:number){
+    this.product.deleteProduct(productId).subscribe((sub)=>{
+      this.getProducts();
+    })
   }
 }
