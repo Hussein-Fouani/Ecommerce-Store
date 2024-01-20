@@ -8,6 +8,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AddNewProductComponent } from './add-new-product/add-new-product.component';
 import { AuthGuard } from './_auth/auth.guard';
 import { ShowproductsDetailsComponent } from './showproducts-details/showproducts-details.component';
+import { ProductResolverService } from './product-resolver.service';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -31,6 +32,9 @@ const routes: Routes = [
     component: AddNewProductComponent,
     canActivate: [AuthGuard],
     data: { role: ['ADMIN'] },
+    resolve: {
+      product: ProductResolverService,
+    },
   },
   { path: 'showproductdetails', component: ShowproductsDetailsComponent },
 ];
