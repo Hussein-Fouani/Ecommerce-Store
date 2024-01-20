@@ -25,12 +25,21 @@ export class ProductService {
   public addProduct(product: FormData) {
     return this.httpClient.post<Product>(this.baseurl, product);
   }
+
   public getAllProducts() {
     return this.httpClient.get<Product[]>(
       this.baseurl + '/api/v1/products/getProducts'
     );
   }
-  deleteProduct(productId: number) {
-   return this.httpClient.delete(this.baseurl+"/deleteProduct"+productId);
+
+  public getProductById(productId: number): Observable<Product> {
+    const url = `${this.baseurl}/products/getProductById/${productId}`; // Adjust the URL to your backend API
+    return this.httpClient.get<Product>(url);
   }
+
+  public deleteProduct(productId: number) {
+    return this.httpClient.delete(this.baseurl + "/deleteProduct" + productId);
+  }
+}
+  
 }
