@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../services/_services/product.service';
@@ -16,6 +17,7 @@ export class ShowproductsDetailsComponent implements OnInit {
     private productService: ProductService,
     public dialog: MatDialog,
     private imageProcessingService: ImageProcessingService
+    ,private router:Router
   ) {}
 
   productDetails: Product[] = [];
@@ -61,5 +63,9 @@ export class ShowproductsDetailsComponent implements OnInit {
       width: '500px',
       data: { images: productImages.productImages }, 
     });
+  }
+  editColumn(element:Product){
+    this.router.navigate(['/addnewproduct',{producId:productId}]);
+    
   }
 }
