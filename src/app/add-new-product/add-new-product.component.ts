@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../services/_services/product.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 interface FileHandle {
   file: File;
@@ -24,11 +25,13 @@ export class AddNewProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private dom: DomSanitizer
+    private dom: DomSanitizer,
+    private activatedrouter: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.loadProducts();
+    this.activatedrouter.snapshot.data['product'];
   }
 
   loadProducts() {
