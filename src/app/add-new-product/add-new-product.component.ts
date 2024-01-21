@@ -15,7 +15,9 @@ interface FileHandle {
   styleUrls: ['./add-new-product.component.css'],
 })
 export class AddNewProductComponent implements OnInit {
+  isNewproduct= true;
   product = {
+    productId:'',
     productname: '',
     productdescription: '',
     productprice: 0,
@@ -32,6 +34,9 @@ export class AddNewProductComponent implements OnInit {
   ngOnInit() {
     this.loadProducts();
     this.activatedrouter.snapshot.data['product'];
+    if(this.product && this.product.productId){
+      this.isNewproduct
+    }
   }
 
   loadProducts() {
