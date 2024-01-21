@@ -1,17 +1,20 @@
 import { DomSanitizer } from '@angular/platform-browser';
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product.model';
-import { FileHandle } from '../model/file-handle.model'; // Import the correct FileHandle type
+import { FileHandle } from '../model/file-handle.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ImageProcessingService {
   constructor(private sanitizer: DomSanitizer) {}
+
   public createImages(product: Product) {
     const pdimages: any[] = product.productImages;
     const productimagetofile: FileHandle[] = [];
-    for (let i = 0; i < productimagetofile.length; i++) {
+
+    for (let i = 0; i < pdimages.length; i++) {
+      // Corrected iteration over pdimages
       const pdimage = pdimages[i];
       const file = this.dataURIToBlob(pdimage.picbyte, pdimage.type);
       const imagefile = new File([file], pdimage.name, { type: pdimage.type });
@@ -23,17 +26,20 @@ export class ImageProcessingService {
       };
       productimagetofile.push(filehandle);
     }
-   product.productImages = productimagetofile;
-   return product;
+
+    product.productImages = productimagetofile;
+    return product;
   }
+
   public dataURIToBlob(picbytes: string, imageType: any) {
     const byteString = window.atob(picbytes);
     const arraybuffer = new ArrayBuffer(byteString.length);
-    
+
     const int8Array = new Uint8Array(arraybuffer);
     for (let i = 0; i < byteString.length; i++) {
       int8Array[i] = byteString.charCodeAt(i);
     }
+
     return new Blob([int8Array], { type: imageType });
   }
 }
