@@ -49,6 +49,9 @@
           </p>
           <div>
             <button mat-stroked-button color="primary">Add Product</button>
+             <button type="submit" mat-stroked-button color="accent" *ngIf="isNewproduct">
+              Edit Product
+            </button>
             <button type="submit" mat-stroked-button color="accent">
               Clear
             </button>
