@@ -16,8 +16,8 @@ export class ShowproductsDetailsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     public dialog: MatDialog,
-    private imageProcessingService: ImageProcessingService
-    ,private router:Router
+    private imageProcessingService: ImageProcessingService,
+    private router: Router
   ) {}
 
   productDetails: Product[] = [];
@@ -27,9 +27,7 @@ export class ShowproductsDetailsComponent implements OnInit {
     'productdescription',
     'productprice',
     'discountprice',
-    'Images',
-    'Edit',
-    'Delete',
+    'Actions',
   ];
 
   ngOnInit(): void {
@@ -61,11 +59,10 @@ export class ShowproductsDetailsComponent implements OnInit {
     this.dialog.open(ViewImagesDiaglogComponent, {
       height: '500px',
       width: '500px',
-      data: { images: productImages.productImages }, 
+      data: { images: productImages.productImages },
     });
   }
-  editColumn(element:Product){
-    this.router.navigate(['/addnewproduct',{producId:productId}]);
-    
+  editColumn(element: Product) {
+    this.router.navigate(['/addnewproduct', { producId: productId }]);
   }
 }
