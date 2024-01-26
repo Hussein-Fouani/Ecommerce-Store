@@ -1,6 +1,10 @@
 mat-grid-list{
     border: 1px solid gray;
 }
+.imgcontainer{
+    position: relative;
+    
+}
 .home-page-image{
     max-width: 90%;
     max-height: 90%;
