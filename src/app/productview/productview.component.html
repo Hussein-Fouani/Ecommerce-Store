@@ -3,7 +3,16 @@
   cum alias animi unde veritatis, ratione reiciendis ut atque voluptatem
   perferendis eligendi. Optio, ad ducimus ut facilis similique ab voluptate.
   <div class="row">
-    <div class="col-6"></div>
+    <div class="col-6">
+        <div class="card image-controller">
+            <img [src]="product.productImages[0]" alt="">
+        </div>
+        <mat-grid-list cols="3" gutterSize="10" rowHeight="1:1">
+            <mat-grid-tile *ngFor="let file of product.productImages" style="border: 1px solid lightgrey;">
+                <img [src]="file.url" alt="" height="100px" width="100px">
+            </mat-grid-tile>    
+        </mat-grid-list>
+    </div>
     <div class="col-6">
       <div class="product-information">
         <div class="mt-3">
