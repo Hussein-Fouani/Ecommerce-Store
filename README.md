@@ -1,27 +1,69 @@
-# Ecommercestore
+# Full Stack E-Commerce Website with Angular and Java Spring Boot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+Welcome to the Full Stack E-Commerce project! This repository contains the source code and materials for building a robust E-Commerce website using Angular for the front end and Java Spring Boot for the back end. The project also includes a seamless integration of Stripe for handling credit card payments.
 
-## Development server
+## Project Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This Full Stack E-Commerce Website project focuses on providing hands-on experience in developing a complete E-Commerce solution. From managing the product catalog to handling secure payment transactions, you'll cover essential aspects of Full Stack development.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular Front End:** Build a responsive and dynamic user interface using Angular, a powerful front-end framework.
 
-## Build
+- **Java Spring Boot Back End:** Develop a scalable and efficient back end using Java Spring Boot, incorporating industry best practices.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **E-Commerce Functionalities:** Implement key features like product catalog management, shopping cart, and a streamlined checkout process.
 
-## Running unit tests
+- **Stripe Integration:** Learn how to integrate and process credit card payments seamlessly using Stripe.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Prerequisites
 
-## Running end-to-end tests
+Before getting started, ensure you have the following:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Node.js and npm installed for Angular development.
+- Java Development Kit (JDK) installed for Java Spring Boot.
+- An account with Stripe for payment processing.
 
-## Further help
+## Getting Started
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/your-username/full-stack-e-commerce.git
+   ```
+
+2. **Navigate to the Project Directory:**
+   ```bash
+   cd full-stack-e-commerce
+   ```
+
+3. **Setup Front End (Angular):**
+   ```bash
+   cd frontend
+   npm install
+   ng serve
+   ```
+
+4. **Setup Back End (Java Spring Boot):**
+   ```bash
+   cd backend
+   ./mvnw spring-boot:run
+   ```
+
+5. **Access the Application:**
+   - Front End: [http://localhost:4200](http://localhost:4200)
+   - Back End: [http://localhost:8080](http://localhost:8080)
+
+## Configuration
+
+- **Stripe Configuration:**
+  - Set your Stripe API key in the appropriate configuration file to enable credit card payments.
+
+## Support and Feedback
+
+If you encounter any issues or have feedback, please open an issue in the repository. For additional support, feel free to reach out me.
+
+## Contribution
+
+Contributions are welcome! If you'd like to enhance the project or fix any issues, please fork the repository and submit a pull request.
+
+Happy coding!
