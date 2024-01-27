@@ -4,6 +4,7 @@ import { Product } from '../model/product.model';
 import { ImageProcessingService } from '../services/image-processing.service';
 import { tap } from 'rxjs';
 import { Init } from 'v8';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +12,11 @@ import { Init } from 'v8';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  productDetails:any;
+  productDetails: any;
   constructor(
     private productservice: ProductService,
-    private imageProcessingService: ImageProcessingService
+    private imageProcessingService: ImageProcessingService,
+    private router : Router
   ) {}
   ngOnInit(): void {
     this.getProducts();
@@ -32,5 +34,8 @@ export class HomeComponent implements OnInit {
       .subscribe((sub: Product[]) => {
         this.productDetails = sub;
       });
+  }
+  showproductDetails(productId: any){
+    this.router.navigate(['/productviewComponent',productId: productId]);
   }
 }
